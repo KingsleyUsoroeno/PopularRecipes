@@ -5,7 +5,7 @@ import com.example.popularrecipes.domain.model.Recipe
 import com.example.popularrecipes.network.RecipeService
 import javax.inject.Inject
 
-class RecipeRepositoryImpl @Inject constructor (
+class RecipeRepositoryImpl @Inject constructor(
     private val recipeDtoMapper: RecipeDtoMapper,
     private val recipeService: RecipeService
 ) : RecipeRepository {

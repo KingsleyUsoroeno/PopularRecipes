@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.popularrecipes.domain.model.Recipe
 import com.example.popularrecipes.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
+
+
+const val PAGE_SIZE = 30
 
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(
@@ -43,6 +45,10 @@ class RecipeListViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun appendNewRecipes(recipes: List<Recipe>) {
+
     }
 
     fun onQueryChanged(query: String) {

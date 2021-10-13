@@ -1,10 +1,9 @@
-package com.example.popularrecipes.presentation.ui.recipe_list
+package com.example.popularrecipes.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -22,43 +21,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.popularrecipes.domain.model.Recipe
-import com.example.popularrecipes.presentation.components.FoodCategoryChip
-import com.example.popularrecipes.presentation.components.LoadingShimmer
-import com.example.popularrecipes.presentation.components.RecipeCard
-
-@Composable
-fun RecipeList(
-    recipes: List<Recipe>,
-    query: String,
-    onValueChange: (String) -> Unit,
-    onSearchClicked: () -> Unit,
-    selectedFoodCategory: FoodCategory?,
-    showProgressbar: Boolean,
-    onToggleTheme: () -> Unit,
-) {
-    Column {
-        CustomToolbar(
-            query = query,
-            onValueChange = onValueChange,
-            onSearchClicked = onSearchClicked,
-            selectedFoodCategory = selectedFoodCategory,
-            onToggleTheme = onToggleTheme
-        )
-
-        //CircularIndeterminateProgressbar(isDisplayed = showProgressbar)
-
-        if (showProgressbar) {
-            LoadingShimmer()
-        } else {
-            LazyColumn {
-                items(recipes.size, itemContent = { index ->
-                    RecipeCard(recipe = recipes[index], onClick = {})
-                })
-            }
-        }
-    }
-}
+import com.example.popularrecipes.presentation.ui.recipe_list.FoodCategory
+import com.example.popularrecipes.presentation.ui.recipe_list.getAllFoodCategories
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
