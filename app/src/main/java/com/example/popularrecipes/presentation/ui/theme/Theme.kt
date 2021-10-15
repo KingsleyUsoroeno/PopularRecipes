@@ -56,7 +56,7 @@ fun PopularRecipesTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = QuickSandTypography,
         shapes = Shapes,
         content = content
     )

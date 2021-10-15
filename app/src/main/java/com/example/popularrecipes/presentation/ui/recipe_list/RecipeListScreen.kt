@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.popularrecipes.presentation.components.CustomToolbar
 import com.example.popularrecipes.presentation.components.DefaultSnackBar
@@ -20,7 +21,7 @@ import com.example.popularrecipes.presentation.ui.Screen
 
 @Composable
 fun RecipeListScreen(
-    recipeListViewModel: RecipeListViewModel,
+    recipeListViewModel: RecipeListViewModel = hiltViewModel(),
     navController: NavController
 ) {
     val scaffoldState = rememberScaffoldState()

@@ -23,7 +23,6 @@ class RecipeDetailViewModel @Inject constructor(
             fetchRecipeState.value = FetchRecipeState.Loading
             try {
                 val recipe = recipeRepository.getRecipeById(token = authToken, id = recipeId)
-                println("recipe is $recipe")
                 fetchRecipeState.value = FetchRecipeState.Loaded(recipe = recipe)
             } catch (e: Exception) {
                 fetchRecipeState.value = FetchRecipeState.Error(

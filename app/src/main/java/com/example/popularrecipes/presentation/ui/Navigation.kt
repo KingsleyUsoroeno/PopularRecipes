@@ -9,16 +9,10 @@ import androidx.navigation.navArgument
 import com.example.popularrecipes.presentation.ui.Screen.RecipeDetailScreen
 import com.example.popularrecipes.presentation.ui.Screen.RecipeListScreen
 import com.example.popularrecipes.presentation.ui.recipe.RecipeDetailScreen
-import com.example.popularrecipes.presentation.ui.recipe.RecipeDetailViewModel
 import com.example.popularrecipes.presentation.ui.recipe_list.RecipeListScreen
-import com.example.popularrecipes.presentation.ui.recipe_list.RecipeListViewModel
 
 @Composable
-fun Navigation(
-    recipeListViewModel: RecipeListViewModel,
-    recipeDetailViewModel: RecipeDetailViewModel,
-
-    ) {
+fun Navigation() {
     val navController = rememberNavController()
 
     NavHost(
@@ -26,12 +20,10 @@ fun Navigation(
         startDestination = RecipeListScreen.routeName
     ) {
         composable(RecipeListScreen.routeName) {
-            RecipeListScreen(
-                recipeListViewModel = recipeListViewModel,
-                navController = navController
-            )
+            RecipeListScreen(navController = navController)
         }
-        composable(RecipeDetailScreen.routeName + "/{recipeId}",
+        composable(
+            RecipeDetailScreen.routeName + "/{recipeId}",
             arguments = listOf(
                 navArgument("recipeId") {
                     type = NavType.IntType
@@ -41,13 +33,7 @@ fun Navigation(
             )) {
 
             val recipeId = it.arguments?.getInt("recipeId")
-            println("logged recipeId is $recipeId")
-            RecipeDetailScreen(
-                recipeId = recipeId,
-                viewModel = recipeDetailViewModel
-            ) { foodRecipeId ->
-                recipeDetailViewModel.loadRecipe(foodRecipeId)
-            }
+            RecipeDetailScreen(recipeId = recipeId)
         }
     }
 }

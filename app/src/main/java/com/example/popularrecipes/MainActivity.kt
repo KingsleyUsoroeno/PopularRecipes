@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.popularrecipes.presentation.ui.Navigation
 import com.example.popularrecipes.presentation.ui.recipe.RecipeDetailViewModel
 import com.example.popularrecipes.presentation.ui.recipe_list.RecipeListViewModel
@@ -35,10 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Navigation(
-                        recipeListViewModel = viewModel,
-                        recipeDetailViewModel = recipeDetailViewModel
-                    )
+                    Navigation()
                 }
             }
         }
@@ -49,8 +45,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 @Preview
 fun RecipeListPreview() {
-    Navigation(
-        recipeListViewModel = viewModel(),
-        recipeDetailViewModel = viewModel()
-    )
+    Navigation()
 }
